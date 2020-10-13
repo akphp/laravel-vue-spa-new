@@ -69,6 +69,11 @@ class User extends Authenticatable implements JWTSubject , MustVerifyEmail
         return $this->hasMany(OAuthProvider::class);
     }
 
+    public function logos()
+    {
+        return $this->hasMany(UserLog::class);
+    }
+
     /**
      * Send the password reset notification.
      *

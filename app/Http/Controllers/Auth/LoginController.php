@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Exceptions\VerifyEmailException;
 use App\Http\Controllers\Controller;
+use App\UserLog;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
@@ -38,6 +40,12 @@ class LoginController extends Controller
         }
 
         $user = $this->guard()->user();
+        UserLog::create([
+            'name' => '',
+            'user_id' => '',
+            'login_at' => now(),
+            'logout_at' => null ,
+        ]);
         if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
             return false;
         }
@@ -95,6 +103,9 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
+        UserLog::where('user_id' , Auth::user()->id )->update([
+            'logout_at' => now() ,
+        ]);
         $this->guard()->logout();
     }
 }
