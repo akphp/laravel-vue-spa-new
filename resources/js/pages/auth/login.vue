@@ -1,13 +1,18 @@
 <template>
   <div class="row">
     <div class="col-lg-8 m-auto">
+
+      <div class="q-pa-md">
+    <div class="q-gutter-md" >
       <card :title="$t('login')">
         <form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <!-- Email -->
           <div class="form-group row">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
+
               <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
+
               <has-error :form="form" field="email" />
             </div>
           </div>
@@ -29,9 +34,9 @@
                 {{ $t('remember_me') }}
               </checkbox>
 
-              <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
+              <!-- <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
                 {{ $t('forgot_password') }}
-              </router-link>
+              </router-link> -->
             </div>
           </div>
 
@@ -50,17 +55,26 @@
       </card>
     </div>
   </div>
+
+     </div>
+  </div>
 </template>
 
 <script>
 import Form from 'vform'
 import LoginWithGithub from '~/components/LoginWithGithub'
 
+import {
+  Quasar,
+  QInput
+} from 'quasar'
+
+
 export default {
   middleware: 'guest',
 
   components: {
-    LoginWithGithub
+    LoginWithGithub , QInput
   },
 
   metaInfo () {

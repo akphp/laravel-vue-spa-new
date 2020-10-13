@@ -1,4 +1,5 @@
 {
-  "/dist/js/app.js": "/dist/js/app.f54529.js",
-  "/dist/css/app.css": "/dist/css/app.3a07a0.css"
+    "/dist/js/app.js": "/dist/js/app.js",
+    "/dist/css/app.css": "/dist/css/app.css",
+    "/resources/views/app.blade.php": "/resources/views/app.blade.php"
 }

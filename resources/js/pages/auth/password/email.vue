@@ -3,7 +3,7 @@
     <div class="col-lg-8 m-auto">
       <card :title="$t('reset_password')">
         <form @submit.prevent="send" @keydown="form.onKeydown($event)">
-          <alert-success :form="form" :message="status" />
+          <!-- <alert-success :form="form" :message="status" /> -->
 
           <!-- Email -->
           <div class="form-group row">

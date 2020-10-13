@@ -5,6 +5,10 @@ require('laravel-mix-versionhash')
 // const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
 
 mix
+.copy('quasarapp/dist/spa/index.html', 'resources/views/app.blade.php')
+.copyDirectory('quasarapp/dist/spa', 'public');
+
+mix
   .js('resources/js/app.js', 'public/dist/js')
   .sass('resources/sass/app.scss', 'public/dist/css')
 
